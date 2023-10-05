@@ -62,44 +62,70 @@
   
 5. **Faculty**:
    
-    4.1 **Поля**:
+   5.1 **Поля**:
    - name
 
-   4.2 **Связи**:
+   5.2 **Связи**:
    - OneToMany с таблицей Speciality
    
 6. **Speciality**:
    
-    4.1 **Поля**:
+   6.1 **Поля**:
    - name
    - facultyId (FK)
 
-   4.2 **Связи**:
+   6.2 **Связи**:
    - ManyToOne с таблицей Faculty
    - OneToMany с таблицей Student
      
 7. **Department**:
 
-    4.1 **Поля**:
+   7.1 **Поля**:
    - name
 
-   4.2 **Связи**:
+   7.2 **Связи**:
    - OneToMany с таблицей Professor
    
 8. **Discipline**:
 
-    4.1 **Поля**:
+   8.1 **Поля**:
    - name
 
-   4.2 **Связи**:
+   8.2 **Связи**:
    - ManyToOne с таблицей Group
    - ManyToOne с таблицей Speciality
    - OneToMany с таблицей Grade
    - OneToOne с таблицей User
    
 10. **Group**:
+
+   10.1 **Поля**:
+   - number
+
+   10.2 **Связи**:
+   - OneToMany с таблицей Timetable
+   - OneToMany с таблицей Student
+   - ManyToMany с таблицей Professor
+
 11. **Grade**:
 12. **Timetable**:
+
+   12.1 **Поля**:
+   - dayOfWeekId (FK)
+   - classTypeId (FK)
+   - disciplineId (FK)
+   - groupId (FK)
+   - classroomId (FK)
+   - classId (FK)
+
+   12.2 **Связи**:
+   - ManyToOne с таблицей DayOfWeek
+   - ManyToOne с таблицей ClassType
+   - ManyToOne с таблицей Discipline
+   - ManyToOne с таблицей Group
+   - ManyToOne с таблицей Classroom
+   - ManyToOne с таблицей Class
+     
 13. **Class**:
 14. **Classroom**:
 15. **ClassType**:
