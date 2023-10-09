@@ -114,6 +114,16 @@
    - ManyToMany с таблицей Professor
 
 11. **Grade**:
+
+   13.1 **Поля**:
+   - disciplineId (FK)
+   - studentId (FK)
+   - grade
+
+   13.2 **Связи**:
+   - ManyToOne с таблицей Discipline
+   - ManyToOne с таблицей Student
+     
 12. **Timetable**:
 
    12.1 **Поля**:
@@ -131,7 +141,7 @@
    - ManyToOne с таблицей Group
    - ManyToOne с таблицей Classroom
    - ManyToOne с таблицей Class
-     
+
 13. **Class**  – таблица, описывающая номер пары, ее время начала и конца
 
    13.1 **Поля**:
