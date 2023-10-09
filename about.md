@@ -178,5 +178,5 @@
    - OneToMany с таблицей Timetable
      
 ## Даталогическая модель
-![db_diagram](university_db.svg)
+![db_diagram](db_university.svg)
 
