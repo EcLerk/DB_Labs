@@ -40,106 +40,102 @@
     - username
     - password
     - email
+    - isSuperUser
+    - isStaff
       
     1.2. **Связи**:
     - OneToOne с таблицей Student
     - OneToOne с таблицей Professor
-    - OneToOne с таблицей Admin
-  
-2. **Admin**
+     
+2. **Professor**:
 
    2.1 **Поля**:
-
-   2.2 **Связи**:
-   - OneToOne с таблицей User
-     
-3. **Professor**:
-
-   3.1 **Поля**:
     - specialization
+    - userId (FK)
     - departmentId (FK)
    
-   3.2 **Связи**:
+   2.2 **Связи**:
    - ManyToMany с таблицей Discipline
    - ManyToMany с таблицей Group
    - ManyToOne с таблицей Department
    - OneToOne С таблицей User
 
-4. **Student**:
+3. **Student**:
 
-   4.1 **Поля**:
+   3.1 **Поля**:
    - enrollmentYear
    - graduationYear
+   - userId (FK)
    - specialityId (FK)
    - groupId (FK)
 
-   4.2 **Связи**:
+   3.2 **Связи**:
    - ManyToOne с таблицей Group
    - ManyToOne с таблицей Speciality
    - OneToMany с таблицей Grade
    - OneToOne с таблицей User
   
-5. **Faculty**:
+4. **Faculty**:
+   
+   4.1 **Поля**:
+   - name
+
+   4.2 **Связи**:
+   - OneToMany с таблицей Speciality
+   
+5. **Speciality**:
    
    5.1 **Поля**:
    - name
-
-   5.2 **Связи**:
-   - OneToMany с таблицей Speciality
-   
-6. **Speciality**:
-   
-   6.1 **Поля**:
-   - name
    - facultyId (FK)
 
-   6.2 **Связи**:
+   5.2 **Связи**:
    - ManyToOne с таблицей Faculty
    - OneToMany с таблицей Student
      
-7. **Department**  – таблица, описывающая кафедру
+6. **Department**  – таблица, описывающая кафедру
+
+   6.1 **Поля**:
+   - name
+
+   6.2 **Связи**:
+   - OneToMany с таблицей Professor
+   
+7. **Discipline**:
 
    7.1 **Поля**:
    - name
 
    7.2 **Связи**:
-   - OneToMany с таблицей Professor
-   
-8. **Discipline**:
-
-   8.1 **Поля**:
-   - name
-
-   8.2 **Связи**:
    - ManyToOne с таблицей Group
    - ManyToOne с таблицей Speciality
    - OneToMany с таблицей Grade
    - OneToOne с таблицей User
    
-10. **Group**:
+8. **Group**:
 
-   10.1 **Поля**:
+   8.1 **Поля**:
    - number
 
-   10.2 **Связи**:
+   8.2 **Связи**:
    - OneToMany с таблицей Timetable
    - OneToMany с таблицей Student
    - ManyToMany с таблицей Professor
 
-11. **Grade**:
+9. **Grade**:
 
-   13.1 **Поля**:
+   9.1 **Поля**:
    - disciplineId (FK)
    - studentId (FK)
    - grade
 
-   13.2 **Связи**:
+   9.2 **Связи**:
    - ManyToOne с таблицей Discipline
    - ManyToOne с таблицей Student
      
-12. **Timetable**:
+10. **Timetable**:
 
-   12.1 **Поля**:
+   10.1 **Поля**:
    - dayOfWeekId (FK)
    - classTypeId (FK)
    - disciplineId (FK)
@@ -147,7 +143,7 @@
    - classroomId (FK)
    - classId (FK)
 
-   12.2 **Связи**:
+   10.2 **Связи**:
    - ManyToOne с таблицей DayOfWeek
    - ManyToOne с таблицей ClassType
    - ManyToOne с таблицей Discipline
@@ -155,39 +151,39 @@
    - ManyToOne с таблицей Classroom
    - ManyToOne с таблицей Class
 
-13. **Class**  – таблица, описывающая номер пары, ее время начала и конца
+11. **Class**  – таблица, описывающая номер пары, ее время начала и конца
 
-   13.1 **Поля**:
+   11.1 **Поля**:
    - classNumber
    - startTime
    - endTime
 
-   13.2 **Связи**:
+   11.2 **Связи**:
    - OneToMany с таблицей Timetable
      
-14. **Classroom**:
+12. **Classroom**:
 
-   14.1 **Поля**:
+   12.1 **Поля**:
    - number
    - building
 
-   14.2 **Связи**:
+   12.2 **Связи**:
    - OneToMany с таблицей Timetable
-     
-15. **ClassType**  – таблица, описывающая тип пары(ЛК, ЛР, ПЗ)
 
-   15.1 **Поля**:
+13. **ClassType**  – таблица, описывающая тип пары(ЛК, ЛР, ПЗ)
+
+   13.1 **Поля**:
    - type
 
-   15.2 **Связи**:
+   13.2 **Связи**:
    - OneToMany с таблицей Timetable
      
-16. **DaysOfWeek**:
+14. **DaysOfWeek**:
 
-   16.1 **Поля**:
+   14.1 **Поля**:
    - name
 
-   16.2 **Связи**:
+   14.2 **Связи**:
    - OneToMany с таблицей Timetable
      
 ## Даталогическая модель
