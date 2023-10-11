@@ -132,7 +132,7 @@
    9.2 **Связи**:
    - ManyToOne с таблицей Discipline
    - ManyToOne с таблицей Student
-     
+
 10. **Timetable**:
 
    10.1 **Поля**:
