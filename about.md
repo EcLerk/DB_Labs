@@ -37,11 +37,11 @@
 1. **User** – таблица, описывающая пользователя
    
     1.1. **Поля**:
-    - username
-    - password
-    - email
-    - isSuperUser
-    - isStaff
+    - username (VARCHAR(45))
+    - password (VARCHAR(45))
+    - email (VARCHAR(45))
+    - isSuperUser (BOOLEAN)
+    - isStaff (BOOLEAN)
       
     1.2. **Связи**:
     - OneToOne с таблицей Student
@@ -50,9 +50,9 @@
 2. **Professor**:
 
    2.1 **Поля**:
-    - specialization
-    - userId (FK)
-    - departmentId (FK)
+    - specialization (VARCHAR(45))
+    - userId (FK) (INT)
+    - departmentId (FK) (INT)
    
    2.2 **Связи**:
    - ManyToMany с таблицей Discipline
@@ -63,11 +63,11 @@
 3. **Student**:
 
    3.1 **Поля**:
-   - enrollmentYear
-   - graduationYear
-   - userId (FK)
-   - specialityId (FK)
-   - groupId (FK)
+   - enrollmentYear (INT)
+   - graduationYear (INT)
+   - userId (FK) (INT)
+   - specialityId (FK) (INT)
+   - groupId (FK) (INT)
 
    3.2 **Связи**:
    - ManyToOne с таблицей Group
@@ -78,7 +78,7 @@
 4. **Faculty**:
    
    4.1 **Поля**:
-   - name
+   - name (VARCHAR(45))
 
    4.2 **Связи**:
    - OneToMany с таблицей Speciality
@@ -86,8 +86,8 @@
 5. **Speciality**:
    
    5.1 **Поля**:
-   - name
-   - facultyId (FK)
+   - name (VARCHAR(45))
+   - facultyId (FK) (INT)
 
    5.2 **Связи**:
    - ManyToOne с таблицей Faculty
@@ -96,7 +96,7 @@
 6. **Department**  – таблица, описывающая кафедру
 
    6.1 **Поля**:
-   - name
+   - name (VARCHAR(45))
 
    6.2 **Связи**:
    - OneToMany с таблицей Professor
@@ -104,7 +104,7 @@
 7. **Discipline**:
 
    7.1 **Поля**:
-   - name
+   - name (VARCHAR(45))
 
    7.2 **Связи**:
    - ManyToOne с таблицей Group
@@ -115,7 +115,7 @@
 8. **Group**:
 
    8.1 **Поля**:
-   - number
+   - number (INT)
 
    8.2 **Связи**:
    - OneToMany с таблицей Timetable
@@ -125,9 +125,9 @@
 9. **Grade**:
 
    9.1 **Поля**:
-   - disciplineId (FK)
-   - studentId (FK)
-   - grade
+   - disciplineId (FK) (INT)
+   - studentId (FK) (INT)
+   - grade (INT)
 
    9.2 **Связи**:
    - ManyToOne с таблицей Discipline
@@ -136,12 +136,12 @@
 10. **Timetable**:
 
    10.1 **Поля**:
-   - dayOfWeekId (FK)
-   - classTypeId (FK)
-   - disciplineId (FK)
-   - groupId (FK)
-   - classroomId (FK)
-   - classId (FK)
+   - dayOfWeekId (FK) (INT)
+   - classTypeId (FK) (INT)
+   - disciplineId (FK) (INT)
+   - groupId (FK) (INT)
+   - classroomId (FK) (INT)
+   - classId (FK) (INT)
 
    10.2 **Связи**:
    - ManyToOne с таблицей DayOfWeek
@@ -154,9 +154,9 @@
 11. **Class**  – таблица, описывающая номер пары, ее время начала и конца
 
    11.1 **Поля**:
-   - classNumber
-   - startTime
-   - endTime
+   - classNumber (INT)
+   - startTime (TIME)
+   - endTime (TIME)
 
    11.2 **Связи**:
    - OneToMany с таблицей Timetable
@@ -164,8 +164,8 @@
 12. **Classroom**:
 
    12.1 **Поля**:
-   - number
-   - building
+   - number (INT)
+   - building (INT)
 
    12.2 **Связи**:
    - OneToMany с таблицей Timetable
@@ -173,7 +173,7 @@
 13. **ClassType**  – таблица, описывающая тип пары(ЛК, ЛР, ПЗ)
 
    13.1 **Поля**:
-   - type
+   - type (VARCHAR(5))
 
    13.2 **Связи**:
    - OneToMany с таблицей Timetable
@@ -181,7 +181,7 @@
 14. **DaysOfWeek**:
 
    14.1 **Поля**:
-   - name
+   - name (VARCHAR(15))
 
    14.2 **Связи**:
    - OneToMany с таблицей Timetable
