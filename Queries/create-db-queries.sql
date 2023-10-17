@@ -32,3 +32,21 @@ CREATE TABLE professor
 	FOREIGN KEY (userId) REFERENCES "user" (id) ON DELETE CASCADE,
 	FOREIGN KEY (departmentId) REFERENCES department (id) ON DELETE SET NULL
 );
+
+CREATE TABLE discipline
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(45) NOT NULL,
+	
+	CHECK (length(name) > 0)
+);
+
+CREATE TABLE professor_discipline
+(
+	id SERIAL PRIMARY KEY,
+	professorId INT NOT NULL,
+	disciplineId INT NOT NULL,
+	
+	FOREIGN KEY (professorId) REFERENCES professor (id) ON DELETE CASCADE,
+	FOREIGN KEY (disciplineId) REFERENCES discipline (id) ON DELETE CASCADE
+);
