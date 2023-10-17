@@ -78,3 +78,11 @@ CREATE TABLE discipline_group
 	FOREIGN KEY (disciplineId) REFERENCES professor (id) ON DELETE CASCADE,
 	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE CASCADE
 );
+
+CREATE TABLE faculty
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(45) NOT NULL,
+	
+	CHECK (length(name) > 0)
+);
