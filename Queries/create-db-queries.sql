@@ -86,3 +86,13 @@ CREATE TABLE faculty
 	
 	CHECK (length(name) > 0)
 );
+
+CREATE TABLE speciality
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(45) NOT NULL,
+	facultyId INT NOT NULL,
+	
+	FOREIGN KEY (facultyId) REFERENCES faculty (id) ON DELETE RESTRICT
+	CHECK (length(name) > 0)
+);
