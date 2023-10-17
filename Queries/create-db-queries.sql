@@ -93,6 +93,6 @@ CREATE TABLE speciality
 	name VARCHAR(45) NOT NULL,
 	facultyId INT NOT NULL,
 	
-	FOREIGN KEY (facultyId) REFERENCES faculty (id) ON DELETE RESTRICT
+	FOREIGN KEY (facultyId) REFERENCES faculty (id) ON DELETE RESTRICT,
 	CHECK (length(name) > 0)
 );
