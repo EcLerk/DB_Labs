@@ -130,3 +130,11 @@ CREATE TABLE dayOfWeek
 	
 	CHECK (length(name) > 0)
 );
+
+CREATE TABLE classType
+(
+	id SERIAL PRIMARY KEY,
+	type VARCHAR(45) NOT NULL,
+	
+	CHECK (length(type) > 0)
+);
