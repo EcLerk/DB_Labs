@@ -158,3 +158,15 @@ CREATE TABLE "class"
 	
 	CHECK(classNumber > 0)
 );
+
+CREATE TABLE timetable
+(
+	id SERIAL PRIMARY KEY,
+	dayOfWeekId INT NOT NULL,
+	classTypeId INT NOT NULL,
+	disciplineId INT NOT NULL,
+	groupId INT NOT NULL,
+	classroomId INT NOT NULL,
+	classId INT NOT NULL,
+	professorId INT NOT NULL
+);
