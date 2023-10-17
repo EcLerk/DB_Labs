@@ -68,3 +68,13 @@ CREATE TABLE professor_group
 	FOREIGN KEY (professorId) REFERENCES professor (id) ON DELETE CASCADE,
 	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE CASCADE
 );
+
+CREATE TABLE discipline_group
+(
+	id SERIAL PRIMARY KEY,
+	disciplineId INT NOT NULL,
+	groupId INT NOT NULL,
+	
+	FOREIGN KEY (disciplineId) REFERENCES professor (id) ON DELETE CASCADE,
+	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE CASCADE
+);
