@@ -138,3 +138,13 @@ CREATE TABLE classType
 	
 	CHECK (length(type) > 0)
 );
+
+CREATE TABLE classroom
+(
+	id SERIAL PRIMARY KEY,
+	number INT NOT NULL,
+	building INT NOT NULL,
+	
+	CHECK(number >= 0),
+	CHECK(building >= 0)
+);
