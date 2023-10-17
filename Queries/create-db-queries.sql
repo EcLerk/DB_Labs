@@ -110,3 +110,15 @@ CREATE TABLE student
 	FOREIGN KEY (specialityId) REFERENCES speciality (id) ON DELETE RESTRICT,
 	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE RESTRICT
 );
+
+CREATE TABLE grade
+(
+	id SERIAL PRIMARY KEY,
+	grade INT NOT NULL,
+	studentId INT NOT NULL,
+	disciplineId INT NOT NULL,
+	
+	CHECK (grade BETWEEN 1 AND 10),
+	FOREIGN KEY (studentId) REFERENCES student (id) ON DELETE CASCADE,
+	FOREIGN KEY (disciplineId) REFERENCES speciality (id) ON DELETE CASCADE
+);
