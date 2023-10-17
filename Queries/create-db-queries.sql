@@ -122,3 +122,11 @@ CREATE TABLE grade
 	FOREIGN KEY (studentId) REFERENCES student (id) ON DELETE CASCADE,
 	FOREIGN KEY (disciplineId) REFERENCES speciality (id) ON DELETE CASCADE
 );
+
+CREATE TABLE dayOfWeek
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(15) NOT NULL,
+	
+	CHECK (length(name) > 0)
+);
