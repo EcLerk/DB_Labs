@@ -148,3 +148,13 @@ CREATE TABLE classroom
 	CHECK(number >= 0),
 	CHECK(building >= 0)
 );
+
+CREATE TABLE "class"
+(
+	id SERIAL PRIMARY KEY,
+	classNumber SMALLINT NOT NULL,
+	startTime TIME NOT NULL,
+	endTime TIME NOT NULL,
+	
+	CHECK(classNumber > 0)
+);
