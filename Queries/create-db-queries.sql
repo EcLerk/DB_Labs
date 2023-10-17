@@ -96,3 +96,17 @@ CREATE TABLE speciality
 	FOREIGN KEY (facultyId) REFERENCES faculty (id) ON DELETE RESTRICT,
 	CHECK (length(name) > 0)
 );
+
+CREATE TABLE student
+(
+	id SERIAL PRIMARY KEY,
+	enrollmentYear INT NOT NULL,
+	graduationYear INT NOT NULL,
+	userId INT NOT NULL,
+	specialityId INT NOT NULL,
+	groupId INT NOT NULL,
+	
+	FOREIGN KEY (userId) REFERENCES "user" (id) ON DELETE CASCADE,
+	FOREIGN KEY (specialityId) REFERENCES speciality (id) ON DELETE RESTRICT,
+	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE RESTRICT
+);
