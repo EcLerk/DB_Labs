@@ -8,10 +8,10 @@ VALUES 	('admin', 'admin', 'adminPass', 'admin@mail.ru', true, false),
 		('Игорь', 'Гламаздин', 'anotherPass', 'csharpovich@gmail.com', false, true),
 		('Вячеслав', 'Проволоцкий', 'qwerty', 'v.provolotskiy@gmail.com', false, true);
 				
-INSERT INTO "group" (number)
-VALUES 	(153501),
-		(153502),
-		(153503);
+INSERT INTO "group" (number, specialityId)
+VALUES 	(153501, 1),
+		(153502, 2),
+		(153503, 1);
 
 INSERT INTO faculty (name)
 VALUES ('КСиС'),
