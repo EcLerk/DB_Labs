@@ -16,3 +16,7 @@ VALUES 	(153501),
 INSERT INTO faculty (name)
 VALUES (' —Ë—'),
 		('‘Ë“”');
+
+INSERT INTO speciality (name, facultyId)
+VALUES 	('»Ë“œ', 1),
+		('¿—Œ»', 2);
