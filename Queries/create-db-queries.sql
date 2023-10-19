@@ -51,11 +51,31 @@ CREATE TABLE professor_discipline
 	FOREIGN KEY (disciplineId) REFERENCES discipline (id) ON DELETE CASCADE
 );
 
+CREATE TABLE faculty
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(45) NOT NULL,
+	
+	CHECK (length(name) > 0)
+);
+
+CREATE TABLE speciality
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(45) NOT NULL,
+	facultyId INT NOT NULL,
+	
+	FOREIGN KEY (facultyId) REFERENCES faculty (id) ON DELETE RESTRICT,
+	CHECK (length(name) > 0)
+);
+
 CREATE TABLE "group"
 (
 	id SERIAL PRIMARY KEY,
 	number INT NOT NULL,
+	specialityId INT,
 	
+	FOREIGN KEY (specialityId) REFERENCES speciality (id),
 	CHECK (number >= 0)
 );
 
@@ -79,42 +99,22 @@ CREATE TABLE discipline_group
 	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE CASCADE
 );
 
-CREATE TABLE faculty
-(
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(45) NOT NULL,
-	
-	CHECK (length(name) > 0)
-);
-
-CREATE TABLE speciality
-(
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(45) NOT NULL,
-	facultyId INT NOT NULL,
-	
-	FOREIGN KEY (facultyId) REFERENCES faculty (id) ON DELETE RESTRICT,
-	CHECK (length(name) > 0)
-);
-
 CREATE TABLE student
 (
 	id SERIAL PRIMARY KEY,
 	enrollmentYear INT NOT NULL,
 	graduationYear INT NOT NULL,
 	userId INT NOT NULL,
-	specialityId INT NOT NULL,
 	groupId INT NOT NULL,
 	
 	FOREIGN KEY (userId) REFERENCES "user" (id) ON DELETE CASCADE,
-	FOREIGN KEY (specialityId) REFERENCES speciality (id) ON DELETE RESTRICT,
 	FOREIGN KEY (groupId) REFERENCES "group" (id) ON DELETE RESTRICT
 );
 
 CREATE TABLE grade
 (
 	id SERIAL PRIMARY KEY,
-	grade INT NOT NULL,
+	grade SMALLINT NOT NULL,
 	studentId INT NOT NULL,
 	disciplineId INT NOT NULL,
 	
