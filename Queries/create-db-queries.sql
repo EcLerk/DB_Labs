@@ -17,7 +17,7 @@ CREATE TABLE "user"(
 CREATE TABLE department
 (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(45) NOT NULL,
+	name TEXT NOT NULL,
 	
 	CONSTRAINT validate_department_name CHECK (length(name)>0)
 );

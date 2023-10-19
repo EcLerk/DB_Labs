@@ -25,3 +25,14 @@ INSERT INTO student (enrollmentYear, graduationYear,
 					userId, groupId)
 VALUES (2021, 2025, 2, 3),
 (2023, 2027, 3, 1);
+
+INSERT INTO department (name)
+VALUES ('Информатики'),
+	('Высшей математики'),
+	('Программного обеспечения информационных технологий');
+
+INSERT INTO discipline (name)
+VALUES ('МДиСУБД'),
+	('СППР'),
+	('СТРweb-пр'),
+	('ВПО');
