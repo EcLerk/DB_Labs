@@ -20,3 +20,8 @@ VALUES ('КСиС'),
 INSERT INTO speciality (name, facultyId)
 VALUES 	('ИиТП', 1),
 		('АСОИ', 2);
+		
+INSERT INTO student (enrollmentYear, graduationYear,
+					userId, groupId)
+VALUES (2021, 2025, 2, 3),
+(2023, 2027, 3, 1);
