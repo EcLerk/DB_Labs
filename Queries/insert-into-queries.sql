@@ -36,3 +36,9 @@ VALUES ('МДиСУБД'),
 	('СППР'),
 	('СТРweb-пр'),
 	('ВПО');
+
+INSERT INTO professor (userId, departmentId, yearsOfExperience)
+VALUES (4, 3, 3),
+	(5, 1, 10),
+	(6, 2, 21),
+	(7, 1, 15)
