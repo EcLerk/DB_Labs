@@ -41,10 +41,20 @@ INSERT INTO professor (userId, departmentId, yearsOfExperience)
 VALUES (4, 3, 3),
 	(5, 1, 10),
 	(6, 2, 21),
-	(7, 1, 15)
+	(7, 1, 15);
 
 INSERT INTO professor_discipline (professorId, disciplineId)
 VALUES (1, 1),
 	(2, 3),
 	(3, 2),
-	(4, 1)
+	(4, 1);
+
+INSERT INTO professor_group (professorid, groupid)
+VALUES (1, 1),
+	(1, 2),
+	(2, 1),
+	(3, 3),
+	(3, 1),
+	(4, 1),
+	(4, 2),
+	(4, 3);
