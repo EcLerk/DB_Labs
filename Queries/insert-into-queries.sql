@@ -58,3 +58,27 @@ VALUES (1, 1),
 	(4, 1),
 	(4, 2),
 	(4, 3);
+
+INSERT INTO discipline_group (disciplineId, groupId)
+VALUES (1, 1),
+	(1, 2),
+	(1, 3),
+	(2, 2),
+	(3, 1),
+	(3, 2),
+	(3, 3),
+	(4, 3);
+
+INSERT INTO grade (grade, studentId, disciplineId)
+VALUES (10, 1, 1),
+	(8, 1, 1),
+	(9, 1, 1),
+	(9, 1, 2),
+	(7, 1, 3),
+	(10, 1, 4),	
+	(8, 2, 1),
+	(8, 2, 2),
+	(8, 2, 2),
+	(10, 2, 2),
+	(9, 2, 3),
+	(10, 2, 4);

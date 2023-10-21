@@ -120,7 +120,7 @@ CREATE TABLE grade
 	
 	CHECK (grade BETWEEN 1 AND 10),
 	FOREIGN KEY (studentId) REFERENCES student (id) ON DELETE CASCADE,
-	FOREIGN KEY (disciplineId) REFERENCES speciality (id) ON DELETE CASCADE
+	FOREIGN KEY (disciplineId) REFERENCES discipline (id) ON DELETE CASCADE
 );
 
 CREATE TABLE dayOfWeek
