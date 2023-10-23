@@ -27,4 +27,9 @@ SELECT studentId, AVG(grade)
 FROM grade
 GROUP BY studentId
 HAVING AVG(grade) > 8
-ORDER BY studentId DESC;
+ORDER BY studentId;
+
+SELECT DISTINCT grade FROM grade
+ORDER BY grade DESC;
+
+
