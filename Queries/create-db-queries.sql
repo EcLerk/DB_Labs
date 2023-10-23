@@ -167,6 +167,5 @@ CREATE TABLE timetable
 	disciplineId INT NOT NULL,
 	groupId INT NOT NULL,
 	classroomId INT NOT NULL,
-	classId INT NOT NULL,
-	professorId INT NOT NULL
+	classId INT NOT NULL
 );
