@@ -32,4 +32,4 @@ ORDER BY studentId;
 SELECT DISTINCT grade FROM grade
 ORDER BY grade DESC;
 
-
+select count(*) from timetable;
