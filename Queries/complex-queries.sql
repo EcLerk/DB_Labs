@@ -48,3 +48,20 @@ WHERE EXISTS (
     WHERE st.id = g.studentId
       AND d.name = 'МДиСУБД'
 );
+
+SELECT
+    "user".name AS student_name,
+    grade.grade,
+    CASE
+        WHEN grade.grade >= 9 THEN 'Отлично'
+        WHEN grade.grade >= 7 THEN 'Хорошо'
+        WHEN grade.grade >= 5 THEN 'Удовлетворительно'
+        ELSE 'Неудовлетворительно'
+    END AS grade_category
+FROM
+    "user"
+JOIN student ON "user".id = student.userId
+JOIN grade ON student.id = grade.studentId
+JOIN discipline ON grade.disciplineId = discipline.id
+WHERE
+    discipline.name = 'МДиСУБД';
