@@ -36,3 +36,15 @@ SELECT *, row_number() OVER () as num FROM timetable;
 
 SELECT grade, studentId FROM grade 
 WHERE grade > (SELECT AVG(grade) FROM grade)
+
+--выбрать студентов, у которых есть оценки по бд
+SELECT u.name AS "name"
+FROM "user" u
+JOIN student st ON u.id = st.userId
+WHERE EXISTS (
+    SELECT 1
+    FROM grade g
+    JOIN discipline d ON g.disciplineId = d.id
+    WHERE st.id = g.studentId
+      AND d.name = 'МДиСУБД'
+);
