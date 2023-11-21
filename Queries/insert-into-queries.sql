@@ -231,3 +231,22 @@ VALUES
 	
 	(6, 1, 4, 3, 1, 1),
 	(6, 1, 1, 3, 1, 2);
+
+CREATE TABLE IF NOT EXISTS action_type
+(
+ id SMALLSERIAL PRIMARY KEY,
+ name VARCHAR(30) NOT NULL UNIQUE,
+ 
+ CHECK (name ~ '^[a-zA-Z ]+$')
+);
+
+CREATE TABLE IF NOT EXISTS action
+(
+ id SMALLSERIAL PRIMARY KEY,
+ action_time TIMESTAMP NOT NULL,
+ user_id INT,
+ action_type_id INT NOT NULL,
+ 
+ FOREIGN KEY (action_type_id) REFERENCES action_type (id),
+ FOREIGN KEY (user_id) REFERENCES "user" (id) ON DELETE SET NULL
+);

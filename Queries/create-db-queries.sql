@@ -104,6 +104,7 @@ CREATE TABLE student
 	id SERIAL PRIMARY KEY,
 	enrollmentYear INT NOT NULL,
 	graduationYear INT NOT NULL,
+	avgGrade NUMERIC(4,2),
 	userId INT NOT NULL,
 	groupId INT NOT NULL,
 	
@@ -168,4 +169,23 @@ CREATE TABLE timetable
 	groupId INT NOT NULL,
 	classroomId INT NOT NULL,
 	classId INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS action_type
+(
+ id SMALLSERIAL PRIMARY KEY,
+ name VARCHAR(30) NOT NULL UNIQUE,
+ 
+ CHECK (name ~ '^[a-zA-Z ]+$')
+);
+
+CREATE TABLE IF NOT EXISTS action
+(
+ id SMALLSERIAL PRIMARY KEY,
+ action_time TIMESTAMP NOT NULL,
+ user_id INT,
+ action_type_id INT NOT NULL,
+ 
+ FOREIGN KEY (action_type_id) REFERENCES action_type (id),
+ FOREIGN KEY (user_id) REFERENCES "user" (id) ON DELETE SET NULL
 );
