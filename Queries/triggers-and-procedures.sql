@@ -67,3 +67,22 @@ CREATE TRIGGER log_student_deletion_trigger
 AFTER DELETE ON student
 FOR EACH ROW
 EXECUTE FUNCTION log_student_deletion();
+
+
+CREATE OR REPLACE FUNCTION log_professor_deletion()
+RETURNS TRIGGER AS $$
+BEGIN
+	--logging StudentDeletion
+   	CALL log_action(OLD.user_id, 5); 
+   
+    -- Удаляем пользователя
+    DELETE FROM "user" WHERE id = OLD.userId;
+    
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_professor_deletion_trigger
+AFTER DELETE ON professor
+FOR EACH ROW
+EXECUTE FUNCTION log_professor_deletion();
