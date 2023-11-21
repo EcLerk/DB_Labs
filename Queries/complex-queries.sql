@@ -65,3 +65,45 @@ JOIN grade ON student.id = grade.studentId
 JOIN discipline ON grade.disciplineId = discipline.id
 WHERE
     discipline.name = 'МДиСУБД';
+
+SELECT
+    "user".name AS professor_name,
+    discipline.name AS discipline_name,
+    COUNT(*) AS discipline_count
+FROM
+    "user"
+JOIN professor ON "user".id = professor.userId
+JOIN professor_discipline ON professor.id = professor_discipline.professorId
+JOIN discipline ON professor_discipline.disciplineId = discipline.id
+GROUP BY
+    "user".name,
+    discipline.name;
+
+SELECT
+    "user".name AS professor_name,
+    discipline.name AS discipline_name,
+ 	
+FROM "user"
+JOIN professor ON professor.userId = "user".Id
+JOIN professor_discipline ON professor.Id = professor_discipline.professorId
+JOIN discipline ON professor_discipline.disciplineId = discipline.Id
+JOIN discipline_group ON discipline_group.disciplineId = discipline.Id
+GROUP BY "user".name, discipline.name, discipline_group.disciplineId
+
+
+
+SELECT
+    discipline.name AS discipline_name,
+    COALESCE("user".name, 'Без преподавателя') AS professor_name,
+    COUNT(DISTINCT "group".id) AS group_count
+FROM
+    discipline
+JOIN discipline_group ON discipline.id = discipline_group.disciplineId
+JOIN "group" ON discipline_group.groupId = "group".id
+LEFT JOIN professor_discipline ON discipline.id = professor_discipline.disciplineId
+LEFT JOIN professor ON professor_discipline.professorId = professor.id
+LEFT JOIN "user" ON professor.userId = "user".id
+GROUP BY
+    discipline.name,
+    "user".name;
+
