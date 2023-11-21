@@ -86,3 +86,66 @@ CREATE TRIGGER log_professor_deletion_trigger
 AFTER DELETE ON professor
 FOR EACH ROW
 EXECUTE FUNCTION log_professor_deletion();
+
+CREATE OR REPLACE FUNCTION users_forbidden_insert()
+RETURNS TRIGGER AS
+$$
+BEGIN
+
+    IF NEW.isstaff = true AND NEW.issuperuser = true THEN
+        RAISE EXCEPTION 'Insertion is not allowed';
+    END IF;
+
+    RETURN NEW;
+
+END;
+$$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER users_forbidden_insert_trigger
+BEFORE INSERT
+ON "user"
+FOR EACH ROW
+EXECUTE PROCEDURE users_forbidden_insert();
+
+--Добавление строки в таблицу студентов
+CREATE OR REPLACE PROCEDURE add_new_student(
+    enrollment_year INT,
+    graduation_year INT,
+    user_name VARCHAR(30),
+    user_surname VARCHAR(30),
+    user_password VARCHAR(45),
+    user_email VARCHAR(45),
+    is_superuser BOOLEAN,
+    is_staff BOOLEAN,
+    group_number INT
+)
+AS $$
+DECLARE
+    user_id INT;
+BEGIN
+    -- Добавление пользователя
+    INSERT INTO "user" (name, surname, password, email, issuperuser, isstaff)
+    VALUES (user_name, user_surname, user_password, user_email, is_superuser, is_staff)
+    RETURNING id INTO user_id;
+    
+    -- Добавление студента
+    INSERT INTO student (enrollmentYear, graduationYear, userId, groupId)
+    VALUES (enrollment_year, graduation_year, user_id, group_number);
+END;
+$$ LANGUAGE plpgsql;
+
+call add_new_student(2021, 2025, 'Лера', 'Качановская', '12345', 'lerakachanovskaya@gmail.com', false, false, 3);
+
+--Добавление оценки студенту
+CREATE OR REPLACE PROCEDURE add_grade_to_student(
+    IN student_id INT,
+    IN discipline_id INT,
+    IN grade_value INT
+)
+AS $$
+BEGIN
+    INSERT INTO grade (grade, studentId, disciplineId)
+    VALUES (grade_value, student_id, discipline_id);
+END;
+$$ LANGUAGE plpgsql;
