@@ -250,3 +250,8 @@ CREATE TABLE IF NOT EXISTS action
  FOREIGN KEY (action_type_id) REFERENCES action_type (id),
  FOREIGN KEY (user_id) REFERENCES "user" (id) ON DELETE SET NULL
 );
+
+INSERT INTO action_type (name)
+VALUES ('Registration'),
+		('Login'),
+		('Logout')
