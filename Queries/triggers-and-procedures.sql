@@ -8,7 +8,7 @@ BEGIN
 	(
 		SELECT AVG(grade)
 		FROM grade
-		WHERE studentId = NEW.studentId
+		WHERE garde.studentId = NEW.studentId
 	)
 	WHERE studentId = NEW.studentId;
 	
